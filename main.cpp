@@ -1,8 +1,9 @@
 #include <iostream>
 
-#include "01/main.cpp"
+#include "01/meter.cpp"
 
 int main(int, char**) {
-    MainClass mc;
+    Meter meter;
+    meter.run();
     return 0;
 }
