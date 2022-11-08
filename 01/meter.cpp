@@ -13,9 +13,8 @@ Meter::~Meter()
 void Meter::run() {
     vector<int> input = read("C:\\Users\\R\\Desktop\\aoc21\\01\\input"); // . or \\ not working
     int answer = 0;
-    auto chg = calcChg(input);
-    int diff = cntDiff(chg);
-    cout << diff << "\n";
+    int inc = cntInc(input);
+    cout << inc << "\n";
 }
 
 vector<int> Meter::read(string path) {
@@ -33,19 +32,19 @@ vector<int> Meter::read(string path) {
 vector<int> Meter::calcChg(vector<int> input) {
     vector<int> chg {};
     for (int i = 0; i < input.size(); ++i) {
-      if (i == 0)
-        continue;
-      if (i != (input.size() - 1) )
-        chg.push_back(input[i] / (input[i-1] - input[i]));
+      // if (i == 0)
+      //   continue;
+      if (i == (input.size() - 1) ) break;
+      chg.push_back(input[i+1] - input[i]);
     }
     return chg;
 }
 
-int Meter::cntDiff(vector<int> chg) {
-  int cnt;
-  for (int i = 0; i < chg.size(); ++i) {
-    if (i == chg.size() - 1) break;
-    if (chg[i] < chg[i+1]) ++cnt;
+int Meter::cntInc(vector<int> input) {
+  signed int inc = 0;
+  for (int i = 0; i < input.size(); ++i) {
+    if (i == input.size() - 1) break;
+    if (input[i] < input[i+1]) ++inc;
   }
-  return cnt;
+  return inc;
 }
