@@ -10,7 +10,6 @@ using namespace std;
 class Meter
 {
     vector<int> read(string);
-    vector<int> calcChg(vector<int>);
     int cntDiff(vector<int>);
     int cntInc(vector<int>);
 
